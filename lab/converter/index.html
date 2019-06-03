@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="/assets/img/favicon.png">
+    
+    <title>Конвертер валют</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/style.css" rel="stylesheet">
+  </head> 
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-10 offset-1 col-md-6 offset-md-3">
+
+          <h1 class="mt-5 mb-5 text-center">Конвертер валют</h1>
+          
+          <div class="form-group">
+            <label for="course">Курс доллара по данным ЦБ</label>
+            <input type="text" class="form-control" id="course" placeholder="Данные ЦБ">
+          </div>
+
+          <div class="form-group">
+            <label for="dol">Количество долларов</label>
+            <input type="text" class="form-control" id="dol" placeholder="0">
+          </div>
+
+          <div class="form-group">
+            <label for="dol">Количество рублей</label>
+            <input type="text" class="form-control" id="rub" placeholder="0">
+          </div>
+
+          <div class="card mt-5">
+            <div class="card-body">
+              <h5 class="card-title">Результат:</h5>
+              <p class="card-text">
+                <span id="result">0</span>
+                <span id="type"></span>
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounter50629003 = new Ya.Metrika2({
+                        id:50629003,
+                        clickmap:true,
+                        trackLinks:true,
+                        accurateTrackBounce:true,
+                        webvisor:true
+                    });
+                } catch(e) { }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/tag.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks2");
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/50629003" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </body>
+</html>
