@@ -1,0 +1,117 @@
+<!-- https://www.valentinog.com/blog/webpack/ -->
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="/assets/img/favicon.png">
+
+  <title>Webpack 4 - тонкости настройки сборщика проектов | Блог Артура Засеева</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="content">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-12">
+          <h1 class="mt-5 mb-5 text-center">Как настроить Webpack 4</h1>
+        </div>
+      </div>
+      
+      <div class="row blog_content">
+        <div class="col-10 offset-1">
+          <p>Webpack 4 со своим появлением на свет получил массовое обновление.</p>
+          <p>Что же в нем нового? Массовое повышение производительности, нулевая конфигурация и нормальные значения по умолчанию.</p>
+          
+          <img src="./img/webpack4_tutorial_01.jpg" alt="Webpack 4" />
+
+          <h2>webpack 4 создание бандла по умолчанию</h2>
+
+          <p>webpack является мощным инструментом разработки, он имеет множество уникальных функций, но его недостатком является сложный для понимания файл конфигурации.</p>
+          <p>Наличие файла конфигурации для веб-проекта имеет большого значения в средних и крупных проектах. Вы просто не сможете жить без него. Тем не менее, для небольших проектов  настройка отдельного файла конфигурации раздражает, особенно если вы хотите запустить какое-нибудь игрушечное приложение.</p>
+          <p>Возможно именно этим обусловлена ростущая популярность такого сборщика проектов как Parcel.</p>
+          <p>Однако с выходом 4-ой версии Webpack систуация изменилась, теперь по усмолчанию файл конфигурации не требуется.</p>
+          <p>Давайте это проверим!</p>
+
+          <h2>webpack 4 пробуем сборку с нулевой конфигурацией</h2>
+
+          <p>Создайте новый каталог и перейдите в него:</p>
+          <pre><code>mkdir webpack-4-quickstart && cd $_</code></pre>
+          <p>Инициализируйте package.json, выполнив:</p>
+          <pre><code>npm init -y</code></pre>
+          <p>Установим Webpack 4</p>
+          <pre><code>npm i webpack --save-dev</code></pre>
+          <p>Теперь откроем package.json и добавим команду для сборки проекта:</p>
+<pre><code>"scripts": {
+  "build": "webpack"
+}</code></pre>
+          <p>Попробуйте запустить сборку командой:</p>
+          <pre><code>npm run build</code></pre>
+          <p>Смотрим, что получилось:</p>
+          <pre><code>ERROR in Entry module not found: Error: Can't resolve './src' in '~/webpack-4-quickstart'</code></pre>
+          <p>webpack 4 ищет точку входа в папке "./src". Точка входа - это файл, который ищет webpack, чтобы начать сборку вашего Javascript.</p>
+          <p>В предыдущих версиях webpack точка входа должна была определяться внутри файла конфигурации с именем "webpack.config.js".</p>
+          <p>Начиная с webpack 4 нет необходимости определять точку входа: ей по умолчанию является файл по адресу - "./src/index.js".</p>
+          <p>Протестировать новую функцию легко. Создадим файл "./src/index.js", со следующим содержимым:</p>
+          <pre><code>console.log(`Это простейшая точка входа`);</code></pre>
+          <p>и снова запустим сборку:</p>
+          <pre><code>npm run build</code></pre>
+          <p>В результате будет сгенерирован готовый бандл по адресу ~/dist/main.js.</p>
+          <p>Как видите в webpack 4 нет необходимости определять ни точку входа, ни выходной файл.</p>
+          <p>Итак, вот первая новость: webpack 4 не нужен файл конфигурации.</p>
+          <p>Он будет по умолчанию искать точку входа в <strong>./src/index.js</strong>.<br>Более того, он будет создавать итоговый пакет в <strong>./dist/main.js</strong>.</p>
+          <p>Далее узнаете о еще одной приятной особенности webpack 4: режимы <strong>production</strong> и <strong>development</strong>.</p>
+
+          <h2>webpack 4: production и development режимы</h2>
+
+          <p>Наличие сразу двух конфигов является нормальной практикой при использовании webpack.</p>
+          <p>Типичный проект на webpack может иметь:</p>
+          <ul>
+            <li>конфигурационный файл для разработки, например запускающий "webpack dev server" и другие вспомогательные инструменты.</li>
+            <li>конфигурационный файл для продакшена, запускающий минификацию и углификацию кода, создание sourcemaps и т.д.</li>
+          </ul>
+          <p>В то время как для прежних проектов все еще могут потребоваться 2 файла, в Webpack 4 вы можете обойтись без единой строчки конфигурации.</p>
+          <p>Как так?</p>
+          <p>В Webpack 4 уже встроены режимы "development" и "production".</p>
+          <p>Откройте файл "package.json" и заполните раздел скрипта следующим образом:</p>
+<pre><code>"scripts": {
+  "dev": "webpack --mode development",
+  "build": "webpack --mode production"
+}</code></pre>
+          <p>Теперь попробуйте запустить:</p>
+          <pre><code>npm run dev</code></pre>
+          <p>и посмотрите на файл ./dist/main.js. Что вы там видите? Да, я знаю, обычный бандл… не минифицированный!</p>
+          <p>Теперь попробуйте запустить:</p>
+          <pre><code>npm run build</code></pre>
+          <p>и посмотрите на ./dist/main.js. Что вы видите сейчас? Минифицированнный бандл!</p>
+          <p>Да!</p>
+          <p>"Production режим" включает в себя все виды оптимизвции кода, прямо из коробки.</p>
+          <p>"Режим Development", с другой стороны, настроен на максимальную скорость сборки и делает не что иное, как предоставляет не
+          минимизированный пакет.</p>
+          <p>Итак, вот вторая новость: Webpack 4 предоставляет режимы "production" и "development".</p>
+          <p>В webpack 4 вы можете обойтись без единой строчки конфигурации! Просто определите флаг --mode, в файле "package.json" и вы получите все из коробки!</p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+
+          <br> <br> <br>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/anal.js"> </script>
+
+</body>
+</html>
