@@ -6,11 +6,17 @@
 	box-sizing: border-box;
 }
 
+
 html, body {
 	width: 100vw;
 	min-height: 100vh;
 	font-family: 'Rubik', sans-serif;
 }
+
+body {
+	overflow-x: hidden;
+}
+
 
 .custom_face {
 	background-image: url('../img/face.jpg');
