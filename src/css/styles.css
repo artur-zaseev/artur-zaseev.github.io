@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600;900&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html, body {
+	width: 100vw;
+	min-height: 100vh;
+	font-family: 'Rubik', sans-serif;
+}
+
+.custom_face {
+	background-image: url('../img/face.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 50%;
+}
