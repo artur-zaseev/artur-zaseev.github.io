@@ -52,15 +52,15 @@ export default function Home() {
             <div className="text-gray-400">
               <p className="text-center lg:text-left">
                 <span className="text-gray-600 block lg:inline">
-                  Регулярно использую в работе:
+                  Регулярно использую:{" "}
                 </span>
                 Vue.js, Vuex, React.js, Redux, Nuxt.js, Next.js, SCSS, Anime.js,
-                Git, Webpack, SVG animation, CSS transitions, Canvas, Google
-                maps, Axios, Tailwindcss, Bootstrap, Figma.
+                Git, Webpack, SVG animation, Canvas, Tailwindcss, Bootstrap,
+                Figma.
               </p>
               <p className="mt-3 text-center lg:text-left">
                 <span className="text-gray-600 block lg:inline">
-                  Имею некоторый опыт работы с:
+                  Имею опыт работы с:{" "}
                 </span>
                 Node.js, Express.js, Styled Components, Handlebars, Lodash,
                 TypeScript, Firebase, Jest.
