@@ -13,7 +13,7 @@ export default function Zp() {
     const dateDiff: Date = new Date(Number(new Date(date)) - Number(new Date()));
     const dateDiffRounded: number = Math.floor(+dateDiff / MS_PER_DAY) + 1;
     setDays(() => (dateDiffRounded > 0 ? dateDiffRounded : 0));
-    setResult(() => (money / dateDiffRounded > 0 && money / dateDiffRounded < Infinity ? money / dateDiffRounded : 0));
+    setResult(() => Math.floor(money / dateDiffRounded > 0 && money / dateDiffRounded < Infinity ? money / dateDiffRounded : 0));
   }, [money, date]);
 
   return (
